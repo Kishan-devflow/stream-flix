@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register - Netflix Clone</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <nav>
+    <a href="index.html" class="logo-link"><img width="53" src="assets/img/logo.svg" alt="Logo" /></a>
+    <div>
+      <a href="login.html" class="btn">Sign In</a>
+    </div>
+  </nav>
+
+  <main class="auth-container">
+    <div class="form-card">
+      <h1>Create your account</h1>
+      <p>Register with your details below to join the Netflix clone experience.</p>
+      <form id="register-form">
+        <div class="form-field">
+          <label for="full-name">Full Name</label>
+          <input id="full-name" name="fullName" type="text" placeholder="Your full name" required />
+        </div>
+
+        <div class="form-field">
+          <label for="register-email">Email address</label>
+          <input id="register-email" name="email" type="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-field">
+          <label for="register-password">Password</label>
+          <input id="register-password" name="password" type="password" placeholder="Create a password" required />
+        </div>
+
+        <div class="form-field">
+          <label for="confirm-password">Confirm password</label>
+          <input id="confirm-password" name="confirmPassword" type="password" placeholder="Confirm password" required />
+        </div>
+
+        <div class="form-field">
+          <label for="favorite-genre">Favorite genre</label>
+          <select id="favorite-genre" name="favoriteGenre" required>
+            <option value="">Choose one</option>
+            <option value="drama">Drama</option>
+            <option value="comedy">Comedy</option>
+            <option value="action">Action</option>
+            <option value="thriller">Thriller</option>
+            <option value="documentary">Documentary</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="watch-preference">What kind of shows do you enjoy most?</label>
+          <textarea id="watch-preference" name="watchPreference" rows="3" placeholder="E.g. family dramas, thrillers, documentaries" required></textarea>
+        </div>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="terms" required />
+          I agree to receive updates and accept the terms.
+        </label>
+
+        <button type="submit" class="btn btn-red">Register</button>
+        <div id="register-status" class="status-message"></div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    document.getElementById('register-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const password = document.getElementById('register-password').value;
+      const confirmPassword = document.getElementById('confirm-password').value;
+      const statusMessage = document.getElementById('register-status');
+
+      if (password !== confirmPassword) {
+        statusMessage.textContent = 'Passwords do not match. Please try again.';
+        statusMessage.style.color = '#ff6b6b';
+        return;
+      }
+
+      statusMessage.textContent = 'Registration complete! Redirecting to welcome page...';
+      statusMessage.style.color = '#90ee90';
+
+      setTimeout(() => {
+        window.location.href = 'welcome.html';
+      }, 1100);
+    });
+  </script>
+</body>
+</html>
